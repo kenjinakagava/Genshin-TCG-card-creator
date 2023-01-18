@@ -8,9 +8,10 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path={"/"}></Route>
-            <Route path={"/cards"}></Route>
-            <Route path={"community"}></Route>
+            <Route path={"/"} element={<div>home</div>}></Route>
+            <Route path={"/cards"} element={<div>cards</div>}></Route>
+            <Route path={"/community"} element={<div>community</div>}></Route>
+            <Route path={"/login"} element={<div>login</div>}></Route>
           </Routes>
         </main>
       </Router>
