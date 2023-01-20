@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CharacterCard {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(14)
+  status Boolean @default(false)
+  energy Int 
+  element String 
+  imgUrl String
+  skills CharacterSkills[]
+}
+
+model CharacterSkills {
+  id Int @id @default(autoincrement())
+  character CharacterCard @relation(fields: [characterId], references: [id])
+  characterId Int
+  skillElementalType String?
+  firstSkillDescription String?
+  firstSkillElementalDiceCost Int?
+  firstSkillGenericDiceCost Int?
+  firstSkillImageUrl String?
+  secondSkillDescription String?
+  secondSkillImageUrl String?
+  secondSkillDiceCost Int?
+  ultimateSkillDescription String?
+  ultimateSkillDiceCost Int?
+  ultimateSkillEnergyCost Int?
+  ultimateSkillImageUrl String?
+  passiveSkillDescription String?
+  passiveSkillImageUrl String?
+}
