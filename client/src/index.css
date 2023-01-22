@@ -2,7 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .active {
   color: #fff;
   text-shadow: 0 0 10px #69e0ff, 0 0 20px #69e0ff, 0 0 40px #69e0ff;
+}
+
+.max-w-hero-title {
+  max-width: 14ch;
+}
+
+.home-hero-header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.home-hero-header {
+  background-image: url("./images/mobile-hero-image.png");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .home-hero-header {
+    background-image: url("./images/tablet-hero-image.png");
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-hero-header {
+    background-image: url("./images/hero-image.png");
+  }
 }

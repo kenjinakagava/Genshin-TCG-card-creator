@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import HamburgerMenu from "../HamburgerMenu";
+import HamburgerMenu from "./HamburgerMenu";
 
 describe("<HamburgerMenu/>", () => {
   it("Toggles Correctly", () => {

@@ -14,7 +14,7 @@ const HamburgerMenu = () => {
   return (
     <div className="fixed flex flex-col items-end w-full md:static">
       <div
-        className={`w-full flex justify-end pr-4 py-4 md:pt-0 ${
+        className={`w-full flex justify-end pt-8 pr-8 md:hidden fold:pr-4 ${
           isActive ? "bg-black" : ""
         }`}
       >
@@ -30,12 +30,16 @@ const HamburgerMenu = () => {
               data-testid="hamburgerClose"
             />
           ) : (
-            <AiOutlineMenu size={32} data-testid="hamburgerOpen" />
+            <AiOutlineMenu
+              size={32}
+              className="fill-white"
+              data-testid="hamburgerOpen"
+            />
           )}
         </button>
       </div>
       <ul
-        className={`hamburger-list flex flex-col items-end w-full text-grey uppercase pr-4 ${
+        className={`hamburger-list flex flex-col items-end w-full text-grey uppercase pr-8 fold:pr-4 fold:text-4xl md:px-4 ${
           isActive
             ? "h-hamburgermenu text-5xl pt-24 gap-8 bg-black"
             : "hidden md:flex md:flex-row gap-4 uppercase"

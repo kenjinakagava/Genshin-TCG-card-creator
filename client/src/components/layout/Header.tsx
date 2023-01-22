@@ -2,7 +2,7 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header className="h-screen">
+    <header>
       <Nav />
     </header>
   );
