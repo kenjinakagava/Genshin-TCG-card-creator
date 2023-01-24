@@ -1,8 +1,13 @@
 import axios from "axios";
 
-const getCards = async (url: string) => {
-  const res = await axios.get(url);
-  console.log(res);
+const getCards = async () => {
+  try {
+    const { data: response } = await axios.get("http://localhost:4001/cards");
+    console.log(response);
+    return response;
+  } catch (error) {
+    return error;
+  }
 };
 
 export default getCards;

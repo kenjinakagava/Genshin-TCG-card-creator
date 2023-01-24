@@ -10,6 +10,7 @@ module.exports = {
       },
       backgroundColor: {
         grey: "rgba(17,17,17,0.75)",
+        beige: "#f7e8d5",
         black: "rgb(31, 31, 38)",
         gold: "#c79240",
         footer: "#101010",
@@ -20,11 +21,11 @@ module.exports = {
       screens: {
         fold: { max: "300px" },
       },
-      height: {
-        hamburgermenu: "calc(100vh - 64px)",
-      },
       textColor: {
         grey: "#ccc",
+      },
+      fontSize: {
+        mobileTitle: "2.75rem",
       },
     },
   },

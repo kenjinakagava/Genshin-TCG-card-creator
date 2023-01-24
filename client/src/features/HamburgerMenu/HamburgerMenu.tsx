@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import Profile from "../Auth/Profile";
 
 const HamburgerMenu = () => {
   const [isActive, setIsActive] = useState(false);
@@ -20,7 +20,7 @@ const HamburgerMenu = () => {
       >
         <button
           onClick={handleClick}
-          className="md:hidden"
+          className="md:hidden fixed"
           data-testid="hamburgerMenu"
         >
           {isActive ? (
@@ -39,9 +39,9 @@ const HamburgerMenu = () => {
         </button>
       </div>
       <ul
-        className={`hamburger-list flex flex-col items-end w-full text-grey uppercase pr-8 fold:pr-4 fold:text-4xl md:px-4 ${
+        className={`hamburger-list flex flex-col items-end w-full text-grey uppercase pr-8 fold:pr-4 fold:text-4xl md:px-4 md:items-center ${
           isActive
-            ? "h-hamburgermenu text-5xl pt-24 gap-8 bg-black"
+            ? "h-screen text-5xl pt-24 gap-8 bg-black"
             : "hidden md:flex md:flex-row gap-4 uppercase"
         } `}
       >
@@ -73,15 +73,7 @@ const HamburgerMenu = () => {
           </NavLink>
         </li>
         <li className="md:ml-auto md:mr-4">
-          <NavLink
-            to="/login"
-            className="flex items-center"
-            onClick={() => setIsActive(false)}
-            data-testid="hamburgerLink"
-          >
-            <span className="md:pr-4">Login</span>
-            <FaUserCircle size={24} className="hidden md:block" />
-          </NavLink>
+          <Profile />
         </li>
       </ul>
     </div>

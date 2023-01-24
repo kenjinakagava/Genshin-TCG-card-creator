@@ -17,6 +17,7 @@ model CharacterCard {
   energy Int 
   element String 
   imgUrl String
+  health String @db.VarChar(2)
   skills CharacterSkills[]
 }
 

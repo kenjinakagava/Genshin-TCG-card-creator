@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       {location.pathname === "/" ? <HeroHeader /> : <Header />}
-      <main className="container">{children}</main>
+      {children}
       <Footer />
     </>
   );

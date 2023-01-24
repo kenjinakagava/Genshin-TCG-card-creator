@@ -8,7 +8,7 @@ const express = require("express");
 const router: Router = express.Router();
 
 router.post("/upload", async (req: Request, res: Response) => {
-  const { title, status, energy, element, imgUrl } = req.body;
+  const { title, status, energy, element, imgUrl, health } = req.body;
   const character = await prisma.CharacterCard.create({
     data: {
       title,
@@ -16,6 +16,7 @@ router.post("/upload", async (req: Request, res: Response) => {
       energy,
       element,
       imgUrl,
+      health,
     },
   });
   return res.status(201).json(character);
