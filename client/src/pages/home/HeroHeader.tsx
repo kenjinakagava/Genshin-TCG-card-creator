@@ -22,6 +22,7 @@ const HeroHeader = () => {
         <Link
           to="/create-a-card"
           className="inline-block p-4 mt-4 bg-gold rounded"
+          data-testid="create-a-card-button"
         >
           Create a card
         </Link>

@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <main className="bg-beige">
       <h2 className="text-center text-mobileTitle md:text-6xl">Recent Cards</h2>
-      <ul className="flex flex-col items-center gap-4 justify-evenly md:flex-row">
+      <ul className="flex flex-col items-center gap-4 justify-evenly py-8 md:flex-row ">
         {cardsQuery?.data?.map((card: CardProps) => (
           <CharacterCard card={card} key={card.id} />
         ))}

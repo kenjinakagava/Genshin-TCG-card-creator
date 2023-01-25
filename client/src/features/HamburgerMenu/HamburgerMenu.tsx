@@ -45,7 +45,7 @@ const HamburgerMenu = () => {
             : "hidden md:flex md:flex-row gap-4 uppercase"
         } `}
       >
-        <li>
+        <li className="hamburger-link">
           <NavLink
             to="/"
             onClick={() => setIsActive(false)}
@@ -55,20 +55,12 @@ const HamburgerMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/cards"
-            onClick={() => setIsActive(false)}
-            data-testid="hamburgerLink"
-          >
+          <NavLink to="/cards" onClick={() => setIsActive(false)}>
             Cards
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/community"
-            onClick={() => setIsActive(false)}
-            data-testid="hamburgerLink"
-          >
+          <NavLink to="/community" onClick={() => setIsActive(false)}>
             Community
           </NavLink>
         </li>

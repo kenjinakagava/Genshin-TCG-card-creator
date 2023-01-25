@@ -27,12 +27,14 @@
     1px 1px 1px #673b2c;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .card-frame {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 1;
   background-image: url("./images/card-frame.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;

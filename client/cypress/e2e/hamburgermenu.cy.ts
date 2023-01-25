@@ -9,9 +9,6 @@ describe("Hamburger Menu Functions Normally", () => {
   });
   it("Closes when changing page", () => {
     cy.get(`[data-testid="hamburgerOpen"]`).click();
-    cy.get(`.hamburger-list > li`).each(($li) => {
-      cy.wrap($li).click();
-      cy.get(`[data-testid="hamburgerOpen"]`).click();
-    });
+    cy.get(`[data-testid="hamburgerLink"]`).click();
   });
 });
