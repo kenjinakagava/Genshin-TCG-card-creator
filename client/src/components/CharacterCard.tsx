@@ -1,6 +1,5 @@
 interface CardProps {
   card: {
-    id: number;
     title: string;
     status: boolean;
     energy: number;
@@ -13,7 +12,7 @@ interface CardProps {
 const CharacterCard = (props: CardProps) => {
   return (
     <>
-      <li className="relative w-[10.06rem] h-[17.05rem] rounded-xl bg-contain">
+      <li className="relative w-[10.06rem] h-[17.05rem] rounded-xl bg-contain flex mx-auto md:mx-0">
         <img
           src={props.card.imgUrl}
           alt={props.card.title}

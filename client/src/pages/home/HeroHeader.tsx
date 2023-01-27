@@ -5,9 +5,9 @@ import Nav from "../../components/layout/Nav";
 
 const HeroHeader = () => {
   return (
-    <header className="h-screen home-hero-header">
+    <header className="h-screen home-hero-header pb-[5.75rem]">
       <Nav />
-      <div className="container pt-32 px-4 text-white mx-auto relative fold:pt-20">
+      <div className="container px-4 text-white mx-auto relative pt-28 fold:pt-20">
         <h1 className="text-[2.75rem] leading-none text-gold md:text-6xl uppercase max-w-hero-title">
           Genshin Custom Cards
         </h1>

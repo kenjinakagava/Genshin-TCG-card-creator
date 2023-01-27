@@ -1,116 +1,101 @@
 import * as icon from "../../icons";
+import ElementRadioButton from "./ElementRadioButton";
+import CardDataProps from "../../interfaces/cardData";
 
-interface ElementTogglerProps {
-  element: string;
-  setElement: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const ElementToggler = ({ element, setElement }: ElementTogglerProps) => {
+const ElementToggler = ({ cardData, setCardData }: CardDataProps) => {
   return (
-    <fieldset className="flex gap-4 justify-center items-center md:flex-row flex-wrap [&>label>input]:absolute [&>label>input]:left-[-9999px] [&>label>img]:w-[3rem] [&>label>img]:h-[3rem] [&>label]:cursor-pointer">
-      <legend className="w-full text-center text-6xl pb-4">
-        {element ? (
+    <fieldset className="flex gap-4 p-4 justify-center items-center md:flex-row flex-wrap [&>label>input]:absolute [&>label>input]:left-[-9999px] [&>label>img]:w-[3rem] [&>label>img]:h-[3rem] [&>label]:cursor-pointer">
+      <legend className="w-full text-center text-6xl py-4">
+        {cardData.element ? (
           <h2 className="capitalize" data-testid="element-descriptor">
-            {element}
+            {cardData.element}
           </h2>
         ) : (
-          <h2>Choose Character Element</h2>
+          <h2>Choose Element</h2>
         )}
       </legend>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="pyro"
-          data-testid="element"
-          onChange={() => setElement("pyro")}
+        <ElementRadioButton
+          setElement={"pyro"}
+          setCardData={setCardData}
+          cardData={cardData}
         />
         <img
-          src={element === "pyro" ? icon.PyroActive : icon.Pyro}
+          src={cardData.element === "pyro" ? icon.PyroActive : icon.Pyro}
           alt="pyro"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="hydro"
-          data-testid="element"
-          onChange={() => setElement("hydro")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"hydro"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "hydro" ? icon.HydroActive : icon.Hydro}
+          src={cardData.element === "hydro" ? icon.HydroActive : icon.Hydro}
           alt="hydro"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="anemo"
-          data-testid="element"
-          onChange={() => setElement("anemo")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"anemo"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "anemo" ? icon.AnemoActive : icon.Anemo}
+          src={cardData.element === "anemo" ? icon.AnemoActive : icon.Anemo}
           alt="anemo"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="electro"
-          data-testid="element"
-          onChange={() => setElement("electro")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"electro"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "electro" ? icon.ElectroActive : icon.Electro}
+          src={
+            cardData.element === "electro" ? icon.ElectroActive : icon.Electro
+          }
           alt="electro"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="dendro"
-          data-testid="element"
-          onChange={() => setElement("dendro")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"dendro"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "dendro" ? icon.DendroActive : icon.Dendro}
+          src={cardData.element === "dendro" ? icon.DendroActive : icon.Dendro}
           alt="dendro"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="cryo"
-          data-testid="element"
-          onChange={() => setElement("cryo")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"cryo"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "cryo" ? icon.CryoActive : icon.Cryo}
+          src={cardData.element === "cryo" ? icon.CryoActive : icon.Cryo}
           alt="cryo"
           data-testid="element-image"
         />
       </label>
       <label>
-        <input
-          type="radio"
-          name="element"
-          value="geo"
-          data-testid="element"
-          onChange={() => setElement("geo")}
-        />{" "}
+        <ElementRadioButton
+          setElement={"geo"}
+          setCardData={setCardData}
+          cardData={cardData}
+        />
         <img
-          src={element === "geo" ? icon.GeoActive : icon.Geo}
+          src={cardData.element === "geo" ? icon.GeoActive : icon.Geo}
           alt="geo"
           data-testid="element-image"
         />

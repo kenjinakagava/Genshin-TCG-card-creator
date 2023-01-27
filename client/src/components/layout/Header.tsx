@@ -2,7 +2,7 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header>
+    <header className="pb-[5.75rem]">
       <Nav />
     </header>
   );

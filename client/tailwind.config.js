@@ -11,9 +11,13 @@ module.exports = {
       backgroundColor: {
         grey: "rgba(17,17,17,0.75)",
         beige: "#f7e8d5",
+        vanilla: "#f9eee3",
         black: "rgb(31, 31, 38)",
         gold: "#c79240",
         footer: "#101010",
+      },
+      borderWidth: {
+        1: "1px",
       },
       boxShadow: {
         under: "0 3px 7px 0 rgb(0 0 0 / 35%);",
