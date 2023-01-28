@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 interface CardDataContextProps {
-  card: {
+  cardData: {
     id: number;
     title: string;
     status: boolean;
@@ -12,7 +12,7 @@ interface CardDataContextProps {
   };
   setCardData: React.Dispatch<
     React.SetStateAction<{
-      card: {
+      cardData: {
         id: number;
         title: string;
         status: boolean;
@@ -26,7 +26,7 @@ interface CardDataContextProps {
 }
 
 const contextState = {
-  card: {
+  cardData: {
     id: 0,
     title: "",
     status: true,

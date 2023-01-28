@@ -10,7 +10,7 @@ interface CardDataProps {
   };
   setCardData: React.Dispatch<
     React.SetStateAction<{
-      card: {
+      cardData: {
         id: number;
         title: string;
         status: boolean;

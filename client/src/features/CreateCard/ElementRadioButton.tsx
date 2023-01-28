@@ -16,7 +16,7 @@ const ElementRadioButton = ({
       value={setElement}
       data-testid="element"
       onChange={() =>
-        setCardData({ card: { ...cardData, element: setElement } })
+        setCardData({ cardData: { ...cardData, element: setElement } })
       }
     />
   );

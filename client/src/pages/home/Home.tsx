@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import postCard from "../../utils/postCard";
 import CharacterCard from "../../components/CharacterCard";
 import getRecentCards from "../../utils/getRecentCards";
 
@@ -14,13 +15,12 @@ interface CardProps {
 
 const Home = () => {
   const cardsQuery = useQuery({ queryKey: ["cards"], queryFn: getRecentCards });
-
   if (cardsQuery.isLoading) {
     return <div>Loading...</div>;
   }
 
   if (cardsQuery.isError) {
-    return <pre>{JSON.stringify(cardsQuery.error)}</pre>;
+    return <div>Error with api</div>;
   }
 
   return (
@@ -28,7 +28,7 @@ const Home = () => {
       <h2 className="text-center text-mobileTitle md:text-6xl">Recent Cards</h2>
       <ul className="flex flex-col items-center gap-4 justify-evenly py-8 md:flex-row ">
         {cardsQuery?.data?.map((card: CardProps) => (
-          <CharacterCard card={card} key={card.id} />
+          <CharacterCard cardData={card} key={card.id} />
         ))}
       </ul>
     </main>

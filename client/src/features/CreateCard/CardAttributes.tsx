@@ -7,7 +7,7 @@ const CardAttributes = () => {
   const [healthValue, setHealthValue] = useState("");
   const [energyValue, setEnergyValue] = useState("");
 
-  const { card, setCardData } = useContext(cardDataContext);
+  const { cardData, setCardData } = useContext(cardDataContext);
   const handleTitleValue = (event: React.FormEvent<HTMLInputElement>) => {
     setTitleValue((event.target as HTMLInputElement).value);
   };
@@ -23,8 +23,8 @@ const CardAttributes = () => {
   const intEnergyValue = parseInt(energyValue);
   useEffect(() => {
     setCardData({
-      card: {
-        ...card,
+      cardData: {
+        ...cardData,
         title: titleValue,
         imgUrl: imgUrlValue,
         health: healthValue,
@@ -33,7 +33,7 @@ const CardAttributes = () => {
     });
   }, [titleValue, imgUrlValue, healthValue, energyValue]);
   return (
-    <fieldset className="flex flex-col px-4 pb-4">
+    <fieldset className="flex flex-col pb-4">
       <label htmlFor="title" className="w-full text-4xl py-4">
         <h2>Input Title</h2>
       </label>

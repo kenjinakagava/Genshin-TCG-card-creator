@@ -4,7 +4,7 @@ import cardDataContext from "../../contexts/cardDataContext";
 import CardForm from "../../features/CreateCard/CardForm";
 
 interface CardProps {
-  card: {
+  cardData: {
     id: number;
     title: string;
     status: boolean;
@@ -15,7 +15,7 @@ interface CardProps {
   };
   setCardData?: React.Dispatch<
     React.SetStateAction<{
-      card: {
+      cardData: {
         id: number;
         title: string;
         status: boolean;
@@ -29,8 +29,8 @@ interface CardProps {
 }
 
 const CreateACardPage = () => {
-  const [cardData, setCardData] = useState<CardProps>({
-    card: {
+  const [card, setCardData] = useState<CardProps>({
+    cardData: {
       id: 0,
       title: "test",
       status: true,
@@ -40,13 +40,13 @@ const CreateACardPage = () => {
       health: "10",
     },
   });
-  const card = cardData.card;
+  const cardData = card.cardData;
   return (
-    <cardDataContext.Provider value={{ card, setCardData }}>
+    <cardDataContext.Provider value={{ cardData, setCardData }}>
       <main className=" min-h-[100vh] pt-8 bg-beige">
         <div className="container mx-auto md:flex md:justify-evenly">
-          <CardForm cardData={cardData.card} setCardData={setCardData} />
-          <CharacterCard card={cardData?.card} />
+          <CardForm />
+          <CharacterCard cardData={card?.cardData} />
         </div>
       </main>
     </cardDataContext.Provider>
