@@ -1,3 +1,5 @@
+import energyCard from "../images/card-energy.png";
+
 import { useEffect } from "react";
 
 interface CardProps {
@@ -27,7 +29,9 @@ const CharacterCard = (props: CardProps) => {
         </div>
         <ul className="flex flex-col card-energy-parent">
           {energyArray.map((energy) => (
-            <li key={props.card.id} className="card-energy" />
+            <li key={props.card.id} className="">
+              <img src={energyCard} alt="" className=" w-12" />
+            </li>
           ))}
         </ul>
         <div className="card-frame z-10" />
