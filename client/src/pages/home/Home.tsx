@@ -1,6 +1,6 @@
-import getCards from "../../utils/getCards";
 import { useQuery } from "@tanstack/react-query";
 import CharacterCard from "../../components/CharacterCard";
+import getRecentCards from "../../utils/getRecentCards";
 
 interface CardProps {
   id: number;
@@ -13,7 +13,7 @@ interface CardProps {
 }
 
 const Home = () => {
-  const cardsQuery = useQuery({ queryKey: ["cards"], queryFn: getCards });
+  const cardsQuery = useQuery({ queryKey: ["cards"], queryFn: getRecentCards });
 
   if (cardsQuery.isLoading) {
     return <div>Loading...</div>;

@@ -13,6 +13,28 @@
   text-shadow: 0 0 10px #69e0ff, 0 0 20px #69e0ff, 0 0 40px #69e0ff;
 }
 
+.card-energy-parent {
+  position: absolute;
+  top: -0.95625rem;
+  right: -0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #673b2c, -1px 1px 1px #673b2c,
+    1px 1px 1px #673b2c;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.card-energy {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 3.75rem;
+  width: 3.1875rem;
+  background-image: url("./images/card-energy.png");
+}
+
 .card-health {
   position: absolute;
   top: -0.95625rem;

@@ -27,6 +27,11 @@ router.get("/cards", async (req: Request, res: Response) => {
   return res.status(200).json(cards);
 });
 
+router.get("/recent-cards", async (req: Request, res: Response) => {
+  const cards = await prisma.CharacterCard.findMany({ take: -4 });
+  return res.status(200).json(cards);
+});
+
 router.get("/cards/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
 

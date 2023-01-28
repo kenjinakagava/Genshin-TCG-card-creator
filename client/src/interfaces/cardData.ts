@@ -1,5 +1,6 @@
 interface CardDataProps {
   cardData: {
+    id: number;
     title: string;
     status: boolean;
     energy: number;
@@ -10,6 +11,7 @@ interface CardDataProps {
   setCardData: React.Dispatch<
     React.SetStateAction<{
       card: {
+        id: number;
         title: string;
         status: boolean;
         energy: number;

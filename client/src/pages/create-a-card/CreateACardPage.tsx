@@ -5,6 +5,7 @@ import CardForm from "../../features/CreateCard/CardForm";
 
 interface CardProps {
   card: {
+    id: number;
     title: string;
     status: boolean;
     energy: number;
@@ -15,6 +16,7 @@ interface CardProps {
   setCardData?: React.Dispatch<
     React.SetStateAction<{
       card: {
+        id: number;
         title: string;
         status: boolean;
         energy: number;
@@ -29,6 +31,7 @@ interface CardProps {
 const CreateACardPage = () => {
   const [cardData, setCardData] = useState<CardProps>({
     card: {
+      id: 0,
       title: "test",
       status: true,
       energy: 0,

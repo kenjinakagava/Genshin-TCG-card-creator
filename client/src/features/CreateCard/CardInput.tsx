@@ -3,6 +3,7 @@ import cardDataContext from "../../contexts/cardDataContext";
 
 interface InputProps {
   cardData: {
+    id: number;
     title: string;
     status: boolean;
     energy: number;
