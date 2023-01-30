@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CharacterCard from "../../components/CharacterCard";
 import cardDataContext from "../../contexts/cardDataContext";
 import CardForm from "../../features/CreateCard/CardForm";

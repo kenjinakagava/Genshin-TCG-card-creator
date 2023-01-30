@@ -5,6 +5,7 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/home/Home";
 import CreateACardPage from "./pages/create-a-card/CreateACardPage";
 import MyCardsPage from "./pages/my-cards/MyCardsPage";
+import AllCards from "./pages/allCards/AllCards";
 
 const queryClient = new QueryClient();
 function App() {
@@ -24,7 +25,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/my-cards" element={<MyCardsPage />} />
                 <Route path="/create-a-card" element={<CreateACardPage />} />
-                <Route path="/all-cards" element={<div>login</div>} />
+                <Route path="/all-cards" element={<AllCards />} />
               </Routes>
             </Layout>
           </Router>
