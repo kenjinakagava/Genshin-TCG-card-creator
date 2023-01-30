@@ -1,4 +1,4 @@
-import { Request, response, Response, Router } from "express";
+import { Request, Response, Router } from "express";
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -8,9 +8,10 @@ const express = require("express");
 const router: Router = express.Router();
 
 router.post("/upload", async (req: Request, res: Response) => {
-  const { title, status, energy, element, imgUrl, health } = req.body;
+  const { title, user, status, energy, element, imgUrl, health } = req.body;
   const character = await prisma.CharacterCard.create({
     data: {
+      user,
       title,
       status,
       energy,
@@ -24,6 +25,12 @@ router.post("/upload", async (req: Request, res: Response) => {
 
 router.get("/cards", async (req: Request, res: Response) => {
   const cards = await prisma.CharacterCard.findMany();
+  return res.status(200).json(cards);
+});
+
+router.get("/user-cards/:user", async (req: Request, res: Response) => {
+  const { user } = req.params;
+  const cards = await prisma.CharacterCard.findMany({ where: { user: user } });
   return res.status(200).json(cards);
 });
 

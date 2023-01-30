@@ -1,6 +1,7 @@
 import axios from "axios";
 
 interface postProps {
+  user: string;
   id: number;
   title: string;
   status: boolean;
@@ -13,6 +14,7 @@ interface postProps {
 const postCard = (cardData: postProps) => {
   return axios
     .post<postProps>("http://localhost:4001/upload", {
+      user: cardData.user,
       title: cardData.title,
       status: true,
       energy: cardData.energy,

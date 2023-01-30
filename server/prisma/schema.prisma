@@ -10,11 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model CharacterCard {
+  user String
   id Int @id @default(autoincrement())
-  title String @db.VarChar(14)
+  title String @db.VarChar(16)
   status Boolean @default(false)
   energy Int 
   element String 
   imgUrl String
-  health String @db.VarChar(2)
+  health String
 }

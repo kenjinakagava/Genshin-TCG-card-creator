@@ -3,6 +3,7 @@ import ElementRadioButton from "./ElementRadioButton";
 import CardDataProps from "../../interfaces/cardData";
 
 const ElementToggler = ({ cardData, setCardData }: CardDataProps) => {
+  console.log(cardData);
   return (
     <fieldset className="flex gap-4 py-4 justify-center items-center md:flex-row flex-wrap [&>label>input]:absolute [&>label>input]:left-[-9999px] [&>label>img]:w-[3rem] [&>label>img]:h-[3rem] [&>label]:cursor-pointer">
       <legend className="w-full text-center text-6xl py-4">

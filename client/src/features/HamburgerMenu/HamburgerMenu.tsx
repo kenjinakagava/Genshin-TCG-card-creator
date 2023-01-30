@@ -55,13 +55,13 @@ const HamburgerMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/cards" onClick={() => setIsActive(false)}>
-            Cards
+          <NavLink to="/my-cards" onClick={() => setIsActive(false)}>
+            My Cards
           </NavLink>
         </li>
         <li>
-          <NavLink to="/community" onClick={() => setIsActive(false)}>
-            Community
+          <NavLink to="/all-cards" onClick={() => setIsActive(false)}>
+            All Cards
           </NavLink>
         </li>
         <li className="md:ml-auto md:mr-4">

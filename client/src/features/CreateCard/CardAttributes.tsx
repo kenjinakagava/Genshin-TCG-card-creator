@@ -4,8 +4,8 @@ import cardDataContext from "../../contexts/cardDataContext";
 const CardAttributes = () => {
   const [titleValue, setTitleValue] = useState("");
   const [imgUrlValue, setImgUrlValue] = useState("");
-  const [healthValue, setHealthValue] = useState("");
-  const [energyValue, setEnergyValue] = useState("");
+  const [healthValue, setHealthValue] = useState("10");
+  const [energyValue, setEnergyValue] = useState("0");
 
   const { cardData, setCardData } = useContext(cardDataContext);
   const handleTitleValue = (event: React.FormEvent<HTMLInputElement>) => {
@@ -20,7 +20,11 @@ const CardAttributes = () => {
   const handleEnergyValue = (event: React.FormEvent<HTMLInputElement>) => {
     setEnergyValue((event.target as HTMLInputElement).value);
   };
-  const intEnergyValue = parseInt(energyValue);
+  let intEnergyValue = parseInt(energyValue);
+  // prevent extra energy icons from being created, preventing lag / crashes
+  if (intEnergyValue > 6) {
+    intEnergyValue = 6;
+  }
   useEffect(() => {
     setCardData({
       cardData: {
@@ -40,7 +44,8 @@ const CardAttributes = () => {
       <input
         type="text"
         name="title"
-        placeholder="title"
+        maxLength={16}
+        placeholder="title (max 16 characters)"
         onChange={(e) => {
           handleTitleValue(e);
         }}
@@ -55,7 +60,8 @@ const CardAttributes = () => {
       <input
         type="text"
         name="health"
-        placeholder="health"
+        maxLength={2}
+        placeholder="health (max 2 characters)"
         onChange={(e) => {
           handleHealthValue(e);
         }}

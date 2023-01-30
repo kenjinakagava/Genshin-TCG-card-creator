@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useState } from "react";
 import CharacterCard from "../../components/CharacterCard";
 import cardDataContext from "../../contexts/cardDataContext";
 import CardForm from "../../features/CreateCard/CardForm";
 
 interface CardProps {
   cardData: {
+    user: string;
     id: number;
     title: string;
     status: boolean;
@@ -16,6 +18,7 @@ interface CardProps {
   setCardData?: React.Dispatch<
     React.SetStateAction<{
       cardData: {
+        user: string;
         id: number;
         title: string;
         status: boolean;
@@ -29,10 +32,12 @@ interface CardProps {
 }
 
 const CreateACardPage = () => {
+  const { isAuthenticated, isLoading, error } = useAuth0();
   const [card, setCardData] = useState<CardProps>({
     cardData: {
+      user: "",
       id: 0,
-      title: "test",
+      title: "",
       status: true,
       energy: 0,
       element: "",
@@ -41,12 +46,34 @@ const CreateACardPage = () => {
     },
   });
   const cardData = card.cardData;
+  if (isLoading) {
+    return (
+      <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
+        <div className="container mx-auto md:flex md:justify-evenly">
+          Loading ...
+        </div>
+      </main>
+    );
+  }
+  if (error) {
+    <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
+      <div className="container mx-auto md:flex md:justify-evenly">
+        Error with API
+      </div>
+    </main>;
+  }
   return (
     <cardDataContext.Provider value={{ cardData, setCardData }}>
-      <main className=" min-h-[100vh] pt-8 bg-beige">
+      <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
         <div className="container mx-auto md:flex md:justify-evenly">
-          <CardForm />
-          <CharacterCard cardData={card?.cardData} />
+          {isAuthenticated ? (
+            <>
+              <CardForm />
+              <CharacterCard cardData={card?.cardData} />
+            </>
+          ) : (
+            <div>please authenticate</div>
+          )}
         </div>
       </main>
     </cardDataContext.Provider>

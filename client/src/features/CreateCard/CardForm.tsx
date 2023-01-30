@@ -2,13 +2,21 @@ import ElementToggler from "./ElementToggler";
 import { useMutation } from "@tanstack/react-query";
 import CardAttributes from "./CardAttributes";
 import postCard from "../../utils/postCard";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import cardDataContext from "../../contexts/cardDataContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CardForm = () => {
+  const { user } = useAuth0();
+  const userEmail = user?.email;
+  let userId = "";
+  if (userEmail !== undefined) {
+    userId = userEmail;
+  }
   const { cardData, setCardData } = useContext(cardDataContext);
-  // onsubmit run api call to post card
-  // usecontext later
+  useEffect(() => {
+    setCardData({ cardData: { ...cardData, user: userId } });
+  }, []);
   const mutation = useMutation({ mutationFn: postCard });
   const handleClick = () => {
     mutation.mutate({ ...cardData });
@@ -20,7 +28,9 @@ const CardForm = () => {
     >
       <ElementToggler cardData={cardData} setCardData={setCardData} />
       <CardAttributes />
-      <button onClick={handleClick}>Create card</button>
+      <button onClick={handleClick} className="send-button">
+        Create card
+      </button>
     </form>
   );
 };
