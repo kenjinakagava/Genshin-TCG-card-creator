@@ -1,5 +1,6 @@
 interface CardProps {
   cardData: {
+    user: string;
     id: number;
     title: string;
     status: boolean;

@@ -14,7 +14,7 @@ const Profile = () => {
           <img
             src={user?.picture}
             alt={user?.name}
-            className="w-9 hidden md:block rounded-full"
+            className="w-9 hidden md:block rounded-full max-h-9"
           />
         </LogoutButton>
       ) : (

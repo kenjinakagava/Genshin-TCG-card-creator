@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import CharacterCard from "../../components/CharacterCard";
+import Loading from "../../components/Loading";
 import getCards from "../../utils/getCards";
-
+import Error from "../../components/Error";
+import CardList from "../../features/CreateCard/CardList";
 interface CardProps {
+  user: string;
   id: number;
   title: string;
   status: boolean;
@@ -19,30 +22,20 @@ const AllCards = () => {
   });
 
   if (cardsQuery.isLoading) {
-    <main className="min-h-[calc(100vh-192px)] bg-beige">
-      <div className="container mx-auto">
-        <p className="text-6xl">Loading...</p>
-      </div>
-    </main>;
+    return <Loading />;
   }
 
   if (cardsQuery.isError) {
-    return (
-      <main className="min-h-[calc(100vh-192px)] bg-beige">
-        <div className="container mx-auto ">
-          <p className="text-6xl">Error fetching cards from API</p>
-        </div>
-      </main>
-    );
+    return <Error />;
   }
 
   return (
-    <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
-      <ul className="flex flex-col items-center gap-4 justify-evenly py-8 md:flex-row ">
+    <main className="bg-beige min-h-screen">
+      <CardList>
         {cardsQuery?.data?.map((card: CardProps) => (
           <CharacterCard cardData={card} key={card.id} />
         ))}
-      </ul>
+      </CardList>
     </main>
   );
 };

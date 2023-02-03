@@ -1,13 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "@tanstack/react-query";
 import CharacterCard from "../../components/CharacterCard";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 import getUsersCards from "../../utils/getUserCards";
-
-interface MyCardsProps {
-  user: string;
-}
+import RequireAuth from "../../features/Auth/RequireAuth";
+import CardList from "../../features/CreateCard/CardList";
 
 interface CardProps {
+  user: string;
   id: number;
   title: string;
   status: boolean;
@@ -28,41 +29,27 @@ const MyCards = () => {
   if (userEmail !== undefined) {
     userId = userEmail;
   }
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-  if (!isAuthenticated) {
-    return <div>please auth bro</div>;
+  // Auth Loading
+  if (isLoading || (isAuthenticated && cardsQuery.isLoading)) {
+    return <Loading />;
   }
 
-  if (cardsQuery.isLoading) {
-    return (
-      <main className="min-h-[calc(100vh-192px)] bg-beige">
-        <div className="container mx-auto">
-          <p className="text-6xl">Loading...</p>
-        </div>
-      </main>
-    );
+  if (!isAuthenticated) {
+    return <RequireAuth />;
   }
 
   if (cardsQuery.isError) {
-    return (
-      <main className="min-h-[calc(100vh-192px)] bg-beige">
-        <div className="container mx-auto ">
-          <p className="text-6xl">Error fetching cards from API</p>
-        </div>
-      </main>
-    );
+    return <Error />;
   }
 
   return (
-    <main className="bg-beige min-h-[calc(100vh-192px)]">
-      <div className="container mx-auto py-8">
-        <ul className="flex flex-col items-center gap-8 justify-evenly md:flex-row flex-wrap">
+    <main className="bg-beige min-h-screen">
+      <div className="container mx-auto">
+        <CardList>
           {cardsQuery.data.map((card: CardProps) => (
-            <CharacterCard cardData={card} key={card.id} />
+            <CharacterCard cardData={card} key={card.id} isMyCard={true} />
           ))}
-        </ul>
+        </CardList>
       </div>
     </main>
   );

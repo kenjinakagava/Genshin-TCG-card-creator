@@ -29,7 +29,11 @@ module.exports = {
         grey: "#ccc",
       },
       fontSize: {
+        image: "0",
         mobileTitle: "2.75rem",
+      },
+      minHeight: {
+        screen: "calc(100vh - 192px)",
       },
     },
   },

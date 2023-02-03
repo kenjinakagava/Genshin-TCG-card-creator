@@ -1,7 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import CharacterCard from "../../components/CharacterCard";
+import Error from "../../components/Error";
+import Loading from "../../components/Loading";
 import cardDataContext from "../../contexts/cardDataContext";
+import RequireAuth from "../../features/Auth/RequireAuth";
 import CardForm from "../../features/CreateCard/CardForm";
 
 interface CardProps {
@@ -46,34 +49,24 @@ const CreateACardPage = () => {
     },
   });
   const cardData = card.cardData;
+
   if (isLoading) {
-    return (
-      <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
-        <div className="container mx-auto md:flex md:justify-evenly">
-          Loading ...
-        </div>
-      </main>
-    );
+    return <Loading />;
   }
+
+  if (!isAuthenticated) {
+    return <RequireAuth />;
+  }
+
   if (error) {
-    <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
-      <div className="container mx-auto md:flex md:justify-evenly">
-        Error with API
-      </div>
-    </main>;
+    return <Error />;
   }
   return (
     <cardDataContext.Provider value={{ cardData, setCardData }}>
-      <main className="min-h-[calc(100vh-192px)] pt-8 bg-beige">
-        <div className="container mx-auto md:flex md:justify-evenly">
-          {isAuthenticated ? (
-            <>
-              <CardForm />
-              <CharacterCard cardData={card?.cardData} />
-            </>
-          ) : (
-            <div>please authenticate</div>
-          )}
+      <main className="min-h-screen bg-beige">
+        <div className="min-h-screen container mx-auto items-center md:flex md:justify-evenly">
+          <CardForm />
+          <CharacterCard cardData={card?.cardData} />
         </div>
       </main>
     </cardDataContext.Provider>

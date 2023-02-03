@@ -13,13 +13,34 @@
   text-shadow: 0 0 10px #69e0ff, 0 0 20px #69e0ff, 0 0 40px #69e0ff;
 }
 
+.card-title {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.card-edit {
+  position: absolute;
+  bottom: -5.5rem;
+  left: 0;
+  z-index: 2;
+}
+
+.card-delete {
+  position: absolute;
+  bottom: -5.5rem;
+  right: 0;
+  z-index: 2;
+}
+
 .card-energy-parent {
   position: absolute;
   top: 0.95625rem;
   right: -1.25rem;
   display: flex;
   flex-direction: column;
-
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #673b2c, -1px 1px 1px #673b2c,
     1px 1px 1px #673b2c;
   align-items: center;

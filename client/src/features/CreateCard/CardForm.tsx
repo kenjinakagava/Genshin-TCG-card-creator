@@ -13,6 +13,7 @@ const CardForm = () => {
   if (userEmail !== undefined) {
     userId = userEmail;
   }
+
   const { cardData, setCardData } = useContext(cardDataContext);
   useEffect(() => {
     setCardData({ cardData: { ...cardData, user: userId } });
@@ -21,6 +22,7 @@ const CardForm = () => {
   const handleClick = () => {
     mutation.mutate({ ...cardData });
   };
+
   return (
     <form
       action="#"

@@ -23,42 +23,6 @@ router.post("/upload", async (req: Request, res: Response) => {
   return res.status(201).json(character);
 });
 
-router.get("/cards", async (req: Request, res: Response) => {
-  const cards = await prisma.CharacterCard.findMany();
-  return res.status(200).json(cards);
-});
-
-router.get("/user-cards/:user", async (req: Request, res: Response) => {
-  const { user } = req.params;
-  const cards = await prisma.CharacterCard.findMany({ where: { user: user } });
-  return res.status(200).json(cards);
-});
-
-router.get("/recent-cards", async (req: Request, res: Response) => {
-  const cards = await prisma.CharacterCard.findMany({ take: -4 });
-  return res.status(200).json(cards);
-});
-
-router.get("/cards/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-
-  const intId = parseInt(id);
-
-  if (!intId) {
-    return res.status(400).json("Id is mandatory");
-  }
-
-  const card = await prisma.CharacterCard.findUnique({
-    where: { id: intId },
-  });
-
-  if (!card) {
-    return res.status(404).json("Card does not exist");
-  }
-
-  return res.status(200).json(card);
-});
-
 router.put("/cards", async (req: Request, res: Response) => {
   const { id, title, status, energy, element, imgUrl } = req.body;
 
