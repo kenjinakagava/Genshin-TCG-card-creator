@@ -64,8 +64,11 @@ const CreateACardPage = () => {
   return (
     <cardDataContext.Provider value={{ cardData, setCardData }}>
       <main className="min-h-screen bg-beige">
-        <div className="min-h-screen container mx-auto items-center md:flex md:justify-evenly">
-          <CardForm />
+        <div className="min-h-screen container mx-auto items-center flex flex-col gap-8 pb-8 md:gap-0 md:flex-row md:justify-evenly ">
+          <div className="flex flex-col gap-8">
+            <h1 className="text-6xl text-center">Create a Card</h1>
+            <CardForm />
+          </div>
           <CharacterCard cardData={card?.cardData} />
         </div>
       </main>

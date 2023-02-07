@@ -31,6 +31,7 @@ const AllCards = () => {
 
   return (
     <main className="bg-beige min-h-screen">
+      <h1 className="text-6xl text-center">All Cards</h1>
       <CardList>
         {cardsQuery?.data?.map((card: CardProps) => (
           <CharacterCard cardData={card} key={card.id} />

@@ -41,15 +41,27 @@ const MyCards = () => {
   if (cardsQuery.isError) {
     return <Error />;
   }
-
   return (
     <main className="bg-beige min-h-screen">
       <div className="container mx-auto">
-        <CardList>
-          {cardsQuery.data.map((card: CardProps) => (
-            <CharacterCard cardData={card} key={card.id} isMyCard={true} />
-          ))}
-        </CardList>
+        <h1 className="text-6xl text-center">My Cards</h1>
+        {cardsQuery.data.length === 0 ? (
+          <div className="min-h-screen flex flex-col justify-center items-center">
+            <h2>You can create your own cards by</h2>
+            <a
+              href="/create-a-card"
+              className="inline-block p-4 mt-4 bg-gold rounded text-white"
+            >
+              clicking here
+            </a>
+          </div>
+        ) : (
+          <CardList>
+            {cardsQuery.data.map((card: CardProps) => (
+              <CharacterCard cardData={card} key={card.id} isMyCard={true} />
+            ))}
+          </CardList>
+        )}
       </div>
     </main>
   );

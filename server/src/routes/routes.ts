@@ -24,7 +24,7 @@ router.post("/upload", async (req: Request, res: Response) => {
 });
 
 router.put("/cards", async (req: Request, res: Response) => {
-  const { id, title, status, energy, element, imgUrl } = req.body;
+  const { id, title, status, energy, element, imgUrl, health } = req.body;
 
   if (!id) {
     return res.status(400).json("Id is mandatory");
@@ -46,6 +46,7 @@ router.put("/cards", async (req: Request, res: Response) => {
       energy,
       element,
       imgUrl,
+      health,
     },
   });
   return res.status(200).json(character);
